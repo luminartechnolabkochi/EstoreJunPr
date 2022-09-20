@@ -1,0 +1,69 @@
+from django.db import models
+class Person:
+  def __init__(self,name):
+    self.name=name
+
+p=Person("ram")
+p1=Person("hari")
+
+print(p1)
+
+class Books(models.Model):
+    name=models.CharField(max_length=200)
+    author=models.CharField(max_length=120)
+    price=models.PositiveIntegerField()
+    publisher=models.CharField(max_length=200)
+    qty=models.PositiveIntegerField(default=1)
+
+
+orm query for creating an object
+=================================
+Modelname.obejcts.create(field1=value,field2=value2,,,,,,,)
+
+Books.objects.create(name="randamoozham",author="mt",price=450,publisher="abc",qty=30)
+
+Books.objects.create(name="arachar",author="meera",price=500,publisher="manorama",qty=50)
+
+
+#listing all records
+#MOdelName.objects.all()
+#qs=Books.objects.al()
+
+
+#fetching a specific resource
+data=MOdelname.objects.get(id=2)
+
+#filter queries
+
+qs=Books.objects.filter(price__lt=550)
+qs=Books.objects.filter(qty__gt=40)
+#exclude
+
+data=Books.objects.all().exclude(price=500)
+Books
+
+python manage.py shell
+
+localhost:8000/products/1/add_review
+localhost:8000/products/1/get_reviews
+
+
+
+commands
+create a new project
+    django-admin startproject projectname
+creating a new app
+    python manage.py startapp appname
+
+development server start
+    python manage.py runserver
+
+
+applying migrations
+    python manage.py makemigrations
+
+apply cahnges to db table
+    python manage.py migrate
+
+running app in different portnumber
+    python manage.py runserver 8002
